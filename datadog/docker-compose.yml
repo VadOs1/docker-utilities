@@ -1,0 +1,15 @@
+version: '3'
+services:
+  redis:
+    image: redis
+  datadog:
+    links:
+      - redis # Ensures datadog container can connect to redis container
+    image: datadog/agent:latest
+    environment:
+      - DD_API_KEY=
+
+
+# https://app.datadoghq.com/signup/agent#windows
+# https://docs.datadoghq.com/integrations/faq/compose-and-the-datadog-agent/
+# http://127.0.0.1:5002/
